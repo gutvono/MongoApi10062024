@@ -22,5 +22,13 @@ namespace MongoApi10062024.Service
             _customer.InsertOne(customer);
             return customer;
         }
+
+        public Customer Put(Customer customer)
+        {
+            _customer.ReplaceOne(c => c.Id == customer.Id, customer);
+            return customer;
+        }
+
+        public void Delete(string id) => _customer.DeleteOne(c => c.Id == id);
     }
 }

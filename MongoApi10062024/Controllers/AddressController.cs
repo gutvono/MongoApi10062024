@@ -22,6 +22,9 @@ namespace MongoApi10062024.Controllers
         [HttpGet("{id:length(24)}", Name = "GetAddress")]
         public ActionResult<Address> Get(string id) => _addressService.Get(id);
 
+        [HttpGet("{cep:length(8)}")]
+        public ActionResult<AddressDTO> GetPostOffice(string cep) => PostOfficeService.GetAddress(cep).Result;
+
         [HttpPost]
         public ActionResult<Address> Post(Address address)
         {
